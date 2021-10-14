@@ -1,0 +1,13 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Are you taking any medications right now?
+            (Including nasal sprays.)
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 105 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 5%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}

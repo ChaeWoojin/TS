@@ -1,0 +1,12 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Do you usually have dry or sore eyes?
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 107 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 7%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}

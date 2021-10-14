@@ -1,0 +1,12 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Have you ever had brain surgery or a head injury before having a runny nose?
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 107 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 108%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}

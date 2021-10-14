@@ -1,0 +1,20 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Do any of the following symptoms appear before the headache starts?
+        </p>
+        <p>
+             - Stars twinkle before your eyes.
+        </p>
+        <p>
+             - A strange sound is heard.
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 101 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 1%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
+
+<!-- Recurrent headache -->

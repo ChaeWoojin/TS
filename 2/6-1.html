@@ -1,0 +1,21 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Are there any accompanying symptoms(like below) after the headache starts?
+        </p>
+        <p>
+             - Did you feel nauseous or vomit?
+        </p>
+        <p>
+             - Does seeing bright lights or hearing loud noises make your headache worse?
+        </p>
+        <p>
+             - Are there specific odors (eg perfume, cigarettes) that make the headache worse?
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 102 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 2%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}

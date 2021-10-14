@@ -1,0 +1,12 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Have you ever been diagnosed with or treated for a neck-related disease before?
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 103 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 3%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}

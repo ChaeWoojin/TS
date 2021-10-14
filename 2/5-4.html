@@ -1,0 +1,24 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q.When you have a headache, do you also experience the following symptoms? (If you have one, please select Yes.)
+        </p>
+        <p>
+             - Does listening to bright lights or loud sounds make your symptoms worse?
+        </p>
+        <p>
+             - Does smelling a certain smell make it more painful?
+        </p>
+        <p>
+             - Are your eyes bloodshot?
+        </p>
+        <p>
+             - Are there no tears or runny nose?
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 105%}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 5%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
