@@ -1,0 +1,10 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p> Q. Do you have severe eye pain? (It feels like your eyes are falling out) </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 104%}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 4%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
