@@ -1,0 +1,19 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Have you had daily or intermittent headaches for more than 3 months?
+        </p>
+        <p>
+            (However, if you have symptoms such as gait abnormality, fever, chills, weight loss, seizures, mental abnormalities, etc., select No)
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 101 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 1%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
+
+<!-- 2. Head and Neck -->
+
+<!-- 2. Sudden Bursting Headache -->

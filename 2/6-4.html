@@ -1,0 +1,15 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Does your head always feel heavy and stuffy?
+        </p>
+        <p>
+             (Does it hurt like a band around your head?)
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 105 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 5%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}

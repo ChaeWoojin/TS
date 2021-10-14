@@ -1,0 +1,14 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p> Q. Are the following symptoms also appearing? (If you have any, please click Yes.) </p>
+        <p>  - Are you having a hard time tolerating the heat or cold? </p>
+        <p>  - Do you usually have hand tremors? </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 101 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 1%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
+
+<!-- Anterior Neck Mass -->

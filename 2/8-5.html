@@ -1,0 +1,12 @@
+{% extends 'archinator/base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p>
+            Q. Have you ever had red eyes in the past?
+        </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 106 %}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 6%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
