@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id='map' style='width:160px;height:400px;display:inline-block;'></div>
+<script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=120fd46cf1eef74e1428294a7a6e4a06'></script>
+    <script>
+    var container = document.getElementById('map'),
+    options = {
+        center: new kakao.maps.LatLng( {{ profile.xpos }}, {{ profile.ypos }}),
+        level: 3
+    }
+    var map = new kakao.maps.Map(container, options);
+    </script>
+</div>
+</body>
+</html>

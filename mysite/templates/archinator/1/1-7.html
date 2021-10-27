@@ -1,0 +1,11 @@
+{% extends 'archinator/1/base1.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p> Q. Do you overreact to the sunlight? </p>
+            <div class="container my-3">
+				<p><a href="{% url 'archinator:question' part.id symptom.id 8%}"> Yes </a></p>
+				<p><a href="{% url 'archinator:question' part.id symptom.id 14%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
+

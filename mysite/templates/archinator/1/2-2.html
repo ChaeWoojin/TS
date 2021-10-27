@@ -1,0 +1,10 @@
+{% extends 'archinator/1/base1.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p> Q. Does anyone in your family have similar symptoms? </p>
+            <div class="container my-3">
+				<p><a href="{% url 'archinator:question' part.id symptom.id 4%}"> Yes </a></p>
+				<p><a href="{% url 'archinator:question' part.id symptom.id 8%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}

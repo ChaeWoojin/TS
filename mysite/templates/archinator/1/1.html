@@ -1,0 +1,34 @@
+{% extends 'archinator/1/base1.html' %}
+{% block content %}
+    <div class="container my-3">
+        <p> Q. Is the rash on your skin flat? </p>
+            <div class="container my-3">
+                <p><a href="{% url 'archinator:question' part.id symptom.id 2%}"> Yes </a></p>
+                <p><a href="{% url 'archinator:question' part.id symptom.id 3%}"> No </a></p>
+            </div>
+    </div>
+{% endblock %}
+<!--
+	{% block question %}
+		Is the rash on your skin flat?
+	{% endblock %}
+	{% block answer1 %}
+		<p><a href="{% url 'hospot:question' part.id symptom.id 2%}"> Yes </a></p>
+	{% endblock %}
+	{% block answer2 %}
+			<p><a href="{% url 'hospot:question' part.id symptom.id 3%}"> No </a></p>
+	{% endblock %}
+
+    <div class="mt-0 p-4">
+        <div class="d-grid gap-0">
+          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+              Q. Is the rash on your skin flat?
+          </a>
+            <div class="m-4 d-grid gap-3">
+                <p><a href="{% url 'hospot:question' part.id symptom.id 2%}"> Yes </a></p>
+                <p><a href="{% url 'hospot:question' part.id symptom.id 3%}"> No </a></p>
+            </div>
+        </div>
+    </div>
+
+-->

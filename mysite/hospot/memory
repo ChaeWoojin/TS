@@ -1,0 +1,50 @@
+['0페이지번호', '1한 페이지 결과수', '2시도코드', '3시군구코드', '4읍면동명',
+'5병원명', '6분류코드', '7종별코드', '8진료과목코드', '9x좌표', '10y좌표', '11반경']
+
+00: General Practitioner
+01: Internal Medicine
+02: Neurology
+03: Neuro Psychiatry
+04: General Surgery
+05: Orthopedic Surgery
+06: Neuro-Surgery
+07: Chest Surgery
+08: Plastic Surgery
+09: Anesthesiology
+10: Obstetrics
+11: Pediatrics
+12: Ophthalmology
+13: Ear, Nose & Throat
+14: Dermatology
+15: Urology
+16: Department of Radiology
+17: Radiation Therapy
+18: Pathology
+19: Diagnostic Laboratory Medicine
+20: Tuberculosis
+21: Rehabilitation Medicine
+22: Nuclear Medicine
+23: Family Medicine
+24: Emergency Medicine
+25: Industrial/Occupational Medicine
+26: Preventive Medicine
+50: Oral and Maxillofacial Surgery
+51: Prosthetic Dentistry
+52: Orthodontics
+53: Pediatric Dentistry
+54: Periodontology
+55: Endodontics
+56: Oral Medicine
+57: Imaging Dentistry
+58: Oral Pathology
+59: Preventive dentistry
+61: Department of Integrated Dentistry
+80: Internal Medicine of Korean Medicine
+81: Obstetrics and Gynecology of Korean Medicine
+82: Pediatrics of Korean Medicine
+83: Ophthalmology, Otorhinolaryngology & Dermatology of Korean Medicine
+84: Neuropsychiatry of Korean Medicine
+85: Acupuncture& Moxibustion Medicine
+86: Rehabilitation Medicine of Korean Medicine
+87: Sasang Constitutional Medicine
+88: Emergency Medicine of Korean Medicine

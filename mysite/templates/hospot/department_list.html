@@ -1,0 +1,34 @@
+{% extends 'style.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row m-2 hospital-list">
+        <div class="col-6 mt-3">
+            {% for profile in profiles %}
+            <div class="hospital-list">
+                {{ profile.name }}
+                [{{ profile.romanname }}]
+                {{ profile.addr }}
+                {{ profile.telno }}
+                {{ profile.url }}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-6" style="min-height:1000px;">
+            <div id='map' style='width:500px;height:800px;display:inline-block;'></div>
+            <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=120fd46cf1eef74e1428294a7a6e4a06'></script>
+            <script>
+                var mapContainer = document.getElementById('map'),
+                mapOption = {center: new kakao.maps.LatLng(36.3682827819718, 127.356981924269),level: 7};
+                var map= new kakao.maps.Map(mapContainer, mapOption);
+                {% for x in addrs %}
+                var markerPosition1 = new kakao.maps.LatLng(x[0], x[1]);
+                var marker1 = new kakao.maps.Marker({position: markerPosition1});
+                marker1.setMap(map);
+                {% endfor %}
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}
