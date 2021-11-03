@@ -1,0 +1,56 @@
+{% extends 'style.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'archinator/css/bootstrap.min.css.map' %}"/>
+<link rel="stylesheet" href="{% static 'archinator/css/practice.css' %}"/>
+<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/modals/">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="modal modal-sheet position-static d-block py-5"
+     style="height: 80vh;"   tabindex="-1" role="dialog" id="modalSheet">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-6 shadow" style="height: 50vh">
+      <div class="modal-header border-bottom-0" >
+        <div class="p-3 modal-title" style="height: 36vh" id="pleasebox">
+          <div id="helper"></div>
+          <div id="qbox"><h1>Question이렇게 길이를 늘리면 어떻게asdfasdfsadfasdfsdaf</h1></div>
+        </div>
+      </div>
+      <div class="card mx-3">
+        <div class="line---"></div>
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="{% url 'archinator:question' part.id symptom.id 103%}" type="button" class="btn btn-lg btn-outline-dark w-100 mx-0 mb-2">Yes</a>
+          </div>
+          <div class="col-md-6">
+            <a href="{% url 'archinator:question' part.id symptom.id 3%}" type="button" class="btn btn-lg btn-outline-dark w-100 mx-0 mb-2">No</a>
+          </div>
+        </div>
+      </div>
+      <section class="d-flex flex-row-reverse" style="height: 20vh; padding-top:40px">
+        <form>
+          <script type="text/javascript">
+          function goBack(){
+            window.history.back();
+          }
+        </script>
+          <input type="button" value="Previous Page" onclick="goBack();"/>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="https://kit.fontawesome.com/93f83a8e2f.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
