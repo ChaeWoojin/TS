@@ -1,0 +1,35 @@
+{% extends 'style.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'archinator/css/partcard.css'%}" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<section class="pt-4">
+    {% if symptom_list %}
+    <div class="container px-lg-5">
+        <!-- Page Features-->
+        <div class="row gx-lg-5">
+            {% for symptom in symptom_list %}
+            <div class="card border-left-primary shadow h-20 py-2 mb-5">
+                <a href="{% url 'archinator:diagnose' part.id symptom.id%}" class="fs-4 fw-bold text-white">
+                    <div class="card-body ">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    {{part}}
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{symptom}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>관련 증상이 없습니다</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
