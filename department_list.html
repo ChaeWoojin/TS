@@ -3,8 +3,9 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'archinator/css/textalign.css' %}"/>
 {% endblock %}
+
 {% block content %}
-<div class="container">
+<div class="container d-md-none d-lg-none d-xl-none">
     <div class="row m-2">
         <div class="border-bottom m-1">
             {% if department %}
@@ -32,10 +33,10 @@
                 .info .link {color: #5085BB;}
             </style>
         </head>
-        <div id='map' style='width:90vw;height:30vh;display:inline-block;' ></div>
+        <div id='map1' style='width:90vw;height:30vh;display:inline-block;' ></div>
         <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=0910ecc1d29b8baf078325b0b2002d13&libraries=services'></script>
         <script>
-            var mapContainer = document.getElementById('map'),
+            var mapContainer = document.getElementById('map1'),
                 mapOption = {
                     center: new kakao.maps.LatLng(36.3682827819718, 127.356981924269),
                     level: 9
@@ -120,6 +121,126 @@
         </div>
     </div>
 </div>
+
+<div class="container d-none d-md-block">
+    <div class="row m-2 hospital-list">
+        <div class="border-bottom m-1">
+            {% if department %}
+            <h2><b> {{ department }} </b></h2>
+            {% else %}
+            <b> nope </b>
+            {% endif %}
+        </div>
+        <div class="col-6" style="overflow-y:auto; width:50%; height:80vh;">
+            {% for profile in profiles %}
+            <div class="card" style="width: 100%; height: auto">
+                <div class="card-body">
+                    {% if profile.star %}
+                    <h6 class="card-hospital-star-name" style="line-height:1em" onclick="overlay[{{forloop.counter0}}].setMap(map)"><b>{{forloop.counter}}. {{ profile.name }} ★</b></h6>
+                    {% else %}
+                    <h6 class="card-hospital-name" style="line-height:1em" onclick="overlay[{{forloop.counter0}}].setMap(map)"><b>{{forloop.counter}}. {{ profile.name }}</b></h6>
+                    {% endif %}
+                    <h6 class="card-roman-name" style="line-height:0.8em">[{{ profile.romanname }}]</h6>
+                    {% if profile.addr %}
+                    <h6 class="card-address" style="line-height:1em">🏠 {{ profile.addr }}</h6>
+                    {% endif %}
+                    {% if profile.telno %}
+                    <h6 class="card-telno" style="line-height:0em">☎ {{ profile.telno }}</h6>
+                    {% endif %}
+                    {% if profile.url %}
+                    <a href="{{ profile.url }}" style="line-height:0.8em">🔗Homepage</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-6">
+            <head>
+                <meta charset="utf-8">
+                <style>
+                    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+                    .wrap * {padding: 0;margin: 0;}
+                    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+                    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+                    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+                    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+                    .info .close:hover {cursor: pointer;}
+                    .info .body {position: relative;overflow: hidden;}
+                    .info .desc {position: relative;margin: 13px 0 0 20px;height: 75px;}
+                    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+                    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+                    .info .img {position: absolute;top: 6px;left: 5px;width: 0px;height: 0px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+                    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+                    .info .link {color: #5085BB;}
+                </style>
+            </head>
+            <div id='map2' style='width:40vw;height:80vh;display:inline-block;' ></div>
+            <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=0910ecc1d29b8baf078325b0b2002d13&libraries=services'></script>
+            <script>
+                var mapContainer = document.getElementById('map2'),
+                    mapOption = {
+                        center: new kakao.maps.LatLng(36.3682827819718, 127.356981924269),
+                        level: 9
+                    };
+                var map = new kakao.maps.Map(mapContainer, mapOption);
+                var geocoder = new kakao.maps.services.Geocoder();
+                var coords = new Array();
+                var marker = new Array();
+                var content = new Array();
+                var overlay = new Array();
+                var infowindow = new Array();
+                function closeOverlay(x) {
+                    overlay[x].setMap(null);
+                };
+                {% for profile in profiles %}
+                coords.push(new kakao.maps.LatLng({{ profile.xpos }}, {{ profile.ypos }}));
+                marker.push(new kakao.maps.Marker({
+                    map: map,
+                    position: coords[{{forloop.counter0}}],
+                title: "{{ profile.name }}",
+                }));
+                content.push(
+                    '<div class="wrap">' +
+                    '    <div class="info">' +
+                    '        <div class="title">' +
+                    '            ' + '{{ forloop.counter }}' +
+                    '            <div class="close" onclick="closeOverlay(' + {{forloop.counter0}} + ')" title="닫기"></div>' +
+                '        </div>' +
+                '        <div class="body">' +
+                '            <div class="desc">' +
+                '                <div class="ellipsis">' + '{{ profile.name }}' + '</div>')
+                content[{{forloop.counter0}}] = content[{{forloop.counter0}}] + '                <div class="hospital-name">' + '{{ profile.addr }}' + '</div>'
+                {% if profile.telno %}
+                content[{{forloop.counter0}}] = content[{{forloop.counter0}}] + '                <div class="telno">' + '{{ profile.telno }}' + '</div>'
+                {% endif %}
+                {% if profile.url %}
+                content[{{forloop.counter0}}] = content[{{forloop.counter0}}] + '                <div><a href="' + '{{ profile.url }}' + '"target="_blank" class="link">Homepage</a></div>'
+                {% endif %}
+                content[{{forloop.counter0}}] = content[{{forloop.counter0}}] +  '            </div>' +
+                '        </div>' +
+                '    </div>' +
+                '</div>';
+
+                overlay.push(new kakao.maps.CustomOverlay({
+                    content: content[{{forloop.counter0}}],
+                map: map,
+                    position: (marker[{{forloop.counter0}}]).getPosition()
+                }));
+                kakao.maps.event.addListener(marker[{{forloop.counter0}}], 'click', function() {
+                    overlay[{{forloop.counter0}}].setMap(map);
+                });
+                infowindow.push(new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">{{ profile.name }}</div>'
+                }));
+                {% endfor %}
+                {% for profile in profiles %}
+                closeOverlay({{forloop.counter0}})
+                {% endfor %}
+            </script>
+        </div>
+    </div>
+</div>
+
 <div class="col-12">
     <div class="row m-2 list">
         <div class="btn-group" style="width: 100%">
