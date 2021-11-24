@@ -2,10 +2,15 @@
 {% load static %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'archinator/css/textalign.css' %}"/>
+<style>
+    ::-webkit-scrollbar {
+        display: none;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-<div class="container d-md-none d-lg-none d-xl-none">
+<div class="container d-md-none d-lg-none d-xl-none"> <!-- mobile -->
     <div class="row m-2">
         <div class="border-bottom m-1">
             {% if department %}
@@ -122,7 +127,7 @@
     </div>
 </div>
 
-<div class="container d-none d-md-block">
+<div class="container d-none d-md-block"> <!-- PC -->
     <div class="row m-2 hospital-list">
         <div class="border-bottom m-1">
             {% if department %}
@@ -174,7 +179,7 @@
                     .info .link {color: #5085BB;}
                 </style>
             </head>
-            <div id='map2' style='width:40vw;height:80vh;display:inline-block;' ></div>
+            <div id='map2' style='width:45vw;height:80vh;display:inline-block;' ></div>
             <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=0910ecc1d29b8baf078325b0b2002d13&libraries=services'></script>
             <script>
                 var mapContainer = document.getElementById('map2'),
@@ -248,7 +253,7 @@
             <button type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/hospot/hospital/{{department_id}}/page={{page_before}}'">←</button>
             {% for profile in profiles %}
             {% if forloop.counter == profiles|length %}
-            <button type="button" class="btn btn-primary" disabled=”disabled” size =>{{ profile.pageNow }}</button>
+            <button type="button" class="btn btn-primary" disabled=”disabled”>{{ profile.pageNow }}</button>
             {% endif %}
             {% endfor %}
             <button type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/hospot/hospital/{{department_id}}/page={{page_next}}'">→</button>
